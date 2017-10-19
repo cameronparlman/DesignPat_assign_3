@@ -51,13 +51,16 @@ public class StateHelper{
 		int avg_prohibited_items = airport.get_avg_prohibited_items();
 	
 		if(avg_traffic >= 8 || avg_prohibited_items >= 2){
-			airport.setAirportState(airport.getHighState());
+			if(!(airport.getState() instanceof High_Risk))
+				airport.setAirportState(airport.getHighState());
 		}		
 		else if(avg_traffic >= 4 || avg_prohibited_items >=1){
-			airport.setAirportState(airport.getModerateState());
+			if(!(airport.getState() instanceof Moderate_Risk))
+				airport.setAirportState(airport.getModerateState());
 		}
 		else{
-			airport.setAirportState(airport.getLowState());
+			if(! (airport.getState() instanceof Low_Risk))
+				airport.setAirportState(airport.getLowState());
 		}
 	}
 

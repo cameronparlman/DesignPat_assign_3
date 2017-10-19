@@ -8,8 +8,10 @@ import airportSecurityState.airportStates.High_Risk;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/*
 
+/*
+Airport class, is context of the state pattern, 
+	
 */
 public class Airport{
 	ArrayList<String> prohibited_items = new ArrayList(Arrays.asList("gun", "nailcutter", "blade", "knife"));
@@ -55,6 +57,7 @@ public class Airport{
 	setAirportState
 	*/
 	public void setAirportState(AirportStateI newAirportState){
+		MyLogger.writeMessage("StateChange:"+airportState.toString()+" -> "+newAirportState.toString(), MyLogger.DebugLevel.STATECHANGE);
 		airportState = newAirportState;
 	}	
 	
@@ -72,6 +75,7 @@ public class Airport{
 	public int get_total_prohibited(){return total_prohibited_items;}
 	public int get_avg_traffic(){return avg_traffic;}
 	public int get_avg_prohibited_items(){return avg_prohibited_items;}
+	public AirportStateI getState(){ return airportState;}
 	public ArrayList<String> get_prohibited_items(){return prohibited_items;}
 
 
