@@ -2,6 +2,7 @@ package airportSecurityState.driver;
 
 import airportSecurityState.util.FileProcessor;
 import airportSecurityState.util.MyLogger;
+import airportSecurityState.airport.Airport;
 
 /** runs the airportSecurityState program 
 @author cameron parlman
@@ -20,7 +21,8 @@ public class Driver{
 
 	/*VERIFY DEBUG LEVEL */
 	try{
-		if(Integer.parseInt(args[2]) >= 0 && Integer.parseInt(args[2]) <= 4){	
+		int debugval = Integer.parseInt(args[2]);
+		if(debugval >= 0 && debugval<= 4){	
 			MyLogger.setDebugValue(Integer.parseInt(args[2]));				
 		}
 		else{throw new IllegalArgumentException("Invalid Debug Value");}
@@ -42,15 +44,21 @@ public class Driver{
 	String file_input_name = args[0];
 	String file_output_name = args[1];	
 
+	Airport airport = new Airport();
 
 	/* READ INPUT FILE WITH FILEPROCESSOR */
 	FileProcessor fileprocessor = new FileProcessor(file_input_name);		
 	String line = "";
 	while(fileprocessor.hasNext()){
 		line = fileprocessor.readLine();
-		String delims = "[:;]+";
-		String[] tokens = line.split(delims);
+		MyLogger.writeMessage(airport.toString(), MyLogger.DebugLevel.DEBUG);
+		airport.newPassenger(line);	
+		 //String delims = "[:;]+";
+         //String[] tokens = line.split(delims);
 
+		//for(String e : tokens){System.out.print(e+", ");}
+		//	System.out.println("");
+	 
 	}
 
 

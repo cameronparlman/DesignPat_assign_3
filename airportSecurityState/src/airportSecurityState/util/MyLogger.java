@@ -5,10 +5,10 @@ public class MyLogger{
     /*DEBUG_VALUE=4 [Print to stdout everytime a constructor is called]
       DEBUG_VALUE=3 [Print to stdout everytime the state is changed]
       DEBUG_VALUE=2 [FIXME: add your own scheme here]
-      DEBUG_VALUE=1 [FIXME: add your own scheme here]
+      DEBUG_VALUE=1 [Print Debug Info]
       DEBUG_VALUE=0 [No output should be printed from the applicatio to stdout. It is ok to write to the output file though" ]
     */
-    public static enum DebugLevel {RELEASE, FROM_RESULTS, IN_RESULTS, IN_RUN, CONSTRUCTOR};
+    public static enum DebugLevel {RELEASE, DEBUG, IN_RESULTS, IN_RUN, CONSTRUCTOR};
 
     private static DebugLevel debugLevel;
 
@@ -17,6 +17,7 @@ public class MyLogger{
 	switch (levelIn) {
 	  case 4: debugLevel = DebugLevel.CONSTRUCTOR; break;
 	      // FIXME: add code for other cases
+	  case 1: debugLevel = DebugLevel.DEBUG; break;
 	  case 0: debugLevel = DebugLevel.RELEASE; break;
 	}
     }
