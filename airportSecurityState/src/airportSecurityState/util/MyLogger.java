@@ -26,8 +26,7 @@ public class MyLogger{
     }
 
     // @return None
-    public static void writeMessage (String  message  ,
-                                     DebugLevel levelIn ) {
+    public static void writeMessage(String message , DebugLevel levelIn ) {
 	if (levelIn == debugLevel)
 	    System.out.println(message);
     }

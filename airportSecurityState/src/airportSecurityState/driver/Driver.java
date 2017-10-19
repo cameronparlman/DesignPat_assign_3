@@ -23,9 +23,19 @@ public class Driver{
 		if(Integer.parseInt(args[2]) >= 0 && Integer.parseInt(args[2]) <= 4){	
 			MyLogger.setDebugValue(Integer.parseInt(args[2]));				
 		}
-		else{ usage(); return;}
+		else{throw new IllegalArgumentException("Invalid Debug Value");}
 	}
-	catch(NumberFormatException e){ System.out.println("Invalid Debug value"); return;} 
+	catch(NumberFormatException exception){ 
+		System.err.println("Invalid Debug value: " + exception.getMessage());
+		exception.printStackTrace();
+		System.exit(1);
+	} 
+	catch(IllegalArgumentException exception){
+		System.err.println(exception.getMessage());
+		exception.printStackTrace();
+		System.exit(1);
+	}
+	
 
 
 	/*ASSIGN FILE I/O NAMES*/
