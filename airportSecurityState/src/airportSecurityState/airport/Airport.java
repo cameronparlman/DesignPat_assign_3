@@ -3,6 +3,8 @@ package airportSecurityState.airport;
 import airportSecurityState.util.MyLogger;
 import airportSecurityState.airportStates.AirportStateI;
 import airportSecurityState.airportStates.Low_Risk;
+import airportSecurityState.airportStates.Moderate_Risk;
+import airportSecurityState.airportStates.High_Risk;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -43,8 +45,8 @@ public class Airport{
 		
 		//INITIALIZE STATES
 		low_risk = new Low_Risk(this);
-	//	moderate_risk = new Moderate_Risk(this);
-	//	high_risk = new High_Risk(this);
+		moderate_risk = new Moderate_Risk(this);
+		high_risk = new High_Risk(this);
 
 		airportState = low_risk;
 	}
@@ -52,7 +54,7 @@ public class Airport{
 	/*
 	setAirportState
 	*/
-	void setAirportState(AirportStateI newAirportState){
+	public void setAirportState(AirportStateI newAirportState){
 		airportState = newAirportState;
 	}	
 	
@@ -94,7 +96,7 @@ public class Airport{
 	
 	@Override
 	public String toString(){
-		return "Days: " + day + "\tProhibited_items: "+total_prohibited_items +"\t"+airportState.toString(); 		
+		return "Days: " + day + "\tProhibited_items: "+total_prohibited_items +"\t"+airportState.toString()+"\tavg_traffic: "+avg_traffic+"\tavg_proh_it: "+avg_prohibited_items; 		
 	}
 	
 }
