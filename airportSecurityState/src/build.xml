@@ -1,0 +1,86 @@
+<project name="airportSecurityState" default="compile_all" basedir="..">
+
+	<property name="BUILD.compiler"		value="modern"/>
+	<property name="src"				value="src"/>
+	<property name="BUILD"				value="src/BUILD"/>
+	<property name="classes" 			value="${BUILD}/classes"/>
+
+	<property name="arg0" 				value="input_file/input-1.txt"/>
+	<property name="arg1" 				value="output_file/output-1.txt"/>
+<!--<property name="arg2" 				value="output_file/output1.txt"/>  -->
+<!--<property name="arg3" 				value="output_file/output2.txt"/> -->
+<!--<property name="arg4" 				value="output_file/output3.txt"/>  -->
+
+	<target name="all" 				depends="compile_all"/>
+	
+	<target name="compile_all"		depends="airportSecurityState"/>
+
+	<target name="clean">
+		<delete dir="${BUILD}"/>
+	</target>
+
+	
+	<!-- Prepare target directories -->
+	<target name="prepare">
+		<mkdir dir="${BUILD}"/>
+		<mkdir dir="${classes}"/>
+	</target>
+
+	<target name="jar">
+		<mkdir dir="${BUILD}/jar"/>
+		<jar destfile="${BUILD}/jar/airportSecurityState.jar" basedir="${BUILD}/classes">
+			<manifest>
+				<attribute name="Main-Class" value="airportSecurityState.driver.Driver"/>
+			</manifest>
+		</jar>
+	</target>
+
+	<!--EDDITED HERE FOR TEST FILES  -->
+	<target name="testjar">
+		<mkdir dir="${BUILD}/test"/>
+		<jar destfile="${BUILD}/test/airportSecurityStateTest.jar" basedir="${BUILD}/classes">
+			<manifest>
+				<attribute name="Main-Class" value="airportSecurityState.test.test"/>
+			</manifest>
+		</jar>
+	</target>
+
+
+<!-- ** means all subdirectories as well -->
+<!-- *  means all files in the current directory -->
+<!-- for just java files use *.java -->
+
+	<target name="airportSecurityState" depends="prepare">
+		<javac 	srcdir="${src}"
+				includes="airportSecurityState/**"
+				excludes="**/package.html"
+				destdir="${classes}"
+				classpath="${classes}"
+				debug="on"
+				optimize="on"
+				verbose="true"
+				deprecation="off"/>
+	</target>
+
+	<target name="run" depends="jar">
+		<java jar="${BUILD}/jar/airportSecurityState.jar" fork="true">
+			<arg value="${arg0}"/>
+			<arg value="${arg1}"/>
+<!--		<arg value="${arg2}"/>-->
+<!--		<arg value="${arg3}"/>-->
+<!--		<arg value="${arg4}"/>-->
+		</java>
+	</target>
+
+<!--	EDDITED HERE FOR TESTS -->
+	<target name="test" depends="testjar">
+		<java jar="${BUILD}/test/airportSecurityStateTest.jar" fork="true">
+			<arg value="${arg0}"/>
+			<arg value="${arg1}"/>
+		</java>
+	</target>
+
+</project>	
+
+	
+		
