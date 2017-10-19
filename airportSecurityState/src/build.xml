@@ -5,9 +5,9 @@
 	<property name="BUILD"				value="src/BUILD"/>
 	<property name="classes" 			value="${BUILD}/classes"/>
 
-	<property name="arg0" 				value="input_file/input-1.txt"/>
-	<property name="arg1" 				value="output_file/output-1.txt"/>
-<!--<property name="arg2" 				value="output_file/output1.txt"/>  -->
+	<property name="arg0" 				value="input_folder/input-1.txt"/>
+	<property name="arg1" 				value="output_folder/output-1.txt"/>
+	<property name="arg2" 				value="4"/> 
 <!--<property name="arg3" 				value="output_file/output2.txt"/> -->
 <!--<property name="arg4" 				value="output_file/output3.txt"/>  -->
 
@@ -66,7 +66,7 @@
 		<java jar="${BUILD}/jar/airportSecurityState.jar" fork="true">
 			<arg value="${arg0}"/>
 			<arg value="${arg1}"/>
-<!--		<arg value="${arg2}"/>-->
+			<arg value="${arg2}"/>
 <!--		<arg value="${arg3}"/>-->
 <!--		<arg value="${arg4}"/>-->
 		</java>
@@ -77,6 +77,7 @@
 		<java jar="${BUILD}/test/airportSecurityStateTest.jar" fork="true">
 			<arg value="${arg0}"/>
 			<arg value="${arg1}"/>
+			<arg value="${arg2}"/>
 		</java>
 	</target>
 
