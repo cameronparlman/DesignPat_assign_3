@@ -7,7 +7,7 @@
 
 	<property name="arg0" 				value="input_folder/input-1.txt"/>
 	<property name="arg1" 				value="output_folder/output-1.txt"/>
-	<property name="arg2" 				value="3"/> 
+	<property name="arg2" 				value="0"/> 
 <!--<property name="arg3" 				value="output_file/output2.txt"/> -->
 <!--<property name="arg4" 				value="output_file/output3.txt"/>  -->
 

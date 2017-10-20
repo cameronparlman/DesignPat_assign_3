@@ -25,7 +25,7 @@ public class FileProcessor{
 	@param fileName is the file to be opened
 	*/
 	public FileProcessor(String fileName){
-		MyLogger.writeMessage("FileProcessor Constructor ("+fileName+")", MyLogger.DebugLevel.CONSTRUCTOR);	
+		MyLogger.writeMessage("FileProcessor("+fileName+")", MyLogger.DebugLevel.CONSTRUCTOR);	
 		try{
 			inFile = new File(fileName);
 			if(!inFile.exists()){System.out.println("File Not Found");}

@@ -3,6 +3,7 @@ package airportSecurityState.driver;
 import airportSecurityState.util.FileProcessor;
 import airportSecurityState.util.MyLogger;
 import airportSecurityState.airport.Airport;
+import airportSecurityState.util.Results;
 
 /** runs the airportSecurityState program 
 @author cameron parlman
@@ -43,6 +44,7 @@ public class Driver{
 	/*ASSIGN FILE I/O NAMES*/
 	String file_input_name = args[0];
 	String file_output_name = args[1];	
+	
 
 	Airport airport = new Airport();
 
@@ -53,13 +55,9 @@ public class Driver{
 		line = fileprocessor.readLine();
 		MyLogger.writeMessage(airport.toString(), MyLogger.DebugLevel.DEBUG);
 		airport.newPassenger(line);	
-		 //String delims = "[:;]+";
-         //String[] tokens = line.split(delims);
-
-		//for(String e : tokens){System.out.print(e+", ");}
-		//	System.out.println("");
-	 
 	}
+	
+	airport.write_results(file_output_name);
 
 
 	}//END MAIN
